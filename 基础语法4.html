@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div @click="outerClick()">
+            <!--获取对象手动处理冒泡-->
+            <button @click="innerClick($event)">内部button</button>
+            <!--使用Vue属性处理冒泡-->
+            <button @click.stop="innerClick2">内部button2</button>
+        </div>
+        <hr/>
+        <form action="http://www.Baidu.com">
+            <input type="submit" value="提交" @onclick="dosubmit($event)"/>
+        </form>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+       
+        var vm = Vue.createApp( {
+           data(){
+               return{
+                   message:'测试'
+               }
+           },
+           methods:{
+               outerClick(){
+                   console.log('OuterClick!!!');
+               },
+               innerClick(event){
+                   event.stopPropagation();//阻止事件冒泡
+                   console.log('InnerClick!!!');
+               },
+               innerClick2(){
+                   console.log('innerClick2!!!');
+               },
+               dosubmit(event){
+                   console.log('form提交');
+               }
+           }
+            }
+        )
+    </script>
+</body>
+</html>

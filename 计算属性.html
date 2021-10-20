@@ -1,0 +1,33 @@
+<div id="app">
+    <!--差值方式显示-->
+    <h2>{{firstName+"."+lastName}}</h2>
+    <!--普通函数-->
+    <h2>{{getFullName()}}</h2>
+    <!--计算属性-->
+    <h2>{{fullName}}</h2>
+    <p>年龄：{{age}}</p>
+</div>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+     var vm = Vue.createApp({
+        data(){
+            return {
+                firstName: '张',
+                lastName:'三',
+                age:18
+            }
+        },
+        methods:{
+            getFullName(){//每次均会被执行
+                console.log('普通函数调用');
+                return this.firstName+'.'+this.lastName;
+            } 
+        },
+        computed:{//计算属性,使用缓存记录相同的数据
+            fullName(){
+                console.log('计算属性调用');
+                return this.firstName+'.'+this.lastName;
+            }
+        }
+    }).mount("#app");
+</script>

@@ -1,0 +1,66 @@
+<div id="app">
+    <h2>搜索</h2>
+    <input type="text" placeholder="请输入姓名" v-model="serachStr" />
+    <div>
+        <h2>排序:</h2>
+        <button @click="orderByType(1)">年龄升序</button><br />
+        <button @click="orderByType(2)">年龄降序</button><br />
+        <button @click="orderByType(0)">恢复默认</button>
+        <ul>
+            <li v-for="(person,index) in filterPersons">
+                {{index+1}}:{{person.name}}--{{person.sex}}--{{person.age}}--{{person.phone}}
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    var vm = Vue.createApp({
+        data() {
+            return {
+                persons: [
+                    { 'name': '张三', 'sex': '男', 'age': 18, 'phone': '110' },
+                    { 'name': '李四', 'sex': '女', 'age': 20, 'phone': '100' },
+                    { 'name': '王五', 'sex': '女', 'age': 40, 'phone': '130' },
+                    { 'name': '赵六', 'sex': '女', 'age': 16, 'phone': '119' },
+                    { 'name': '李七', 'sex': '男', 'age': 21, 'phone': '114' },
+                    { 'name': '田八', 'sex': '男', 'age': 11, 'phone': '200' }
+                ],
+                serachStr: '',
+                //默认方式 0排序，1升序，2降序
+                orderType: 0
+            }
+        },
+        methods: {
+            orderByType(orderByType) {
+                this.orderType = orderByType;
+            }
+        },
+        computed: {
+            filterPersons() {
+                //使用ES6结构语法快速赋值
+                const { persons,serachStr,orderType} =this;
+                //ES6深拷贝
+                let arr =[...persons];
+                //trim去除前后空格
+                if (serachStr.trim()) {//空字符为false
+                    //过滤符合条件的person
+                    arr = persons.filter((p)=>{
+                        return p.name.indexOf(serachStr)!==-1;
+                    });
+                }
+                //排序
+                if (orderType) {//0为false
+                    arr.sort((p1,p2)=>{
+                        if (orderType===1) {
+                            return p1.age-p2.age;
+                        } else {
+                            return p2.age-p1.age;
+                        }
+                    });
+                }
+                return arr;
+            }
+        }
+    }).mount("#app");
+</script>

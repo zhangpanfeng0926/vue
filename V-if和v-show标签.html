@@ -1,0 +1,18 @@
+    <div id="app">
+        <div v-if="flag">这是v-if标签为true的结果</div>
+        <div v-else>这是v-if标签为false的结果</div>
+        <div v-show="flag">这是v-show标签为true的结果</div>
+        <div v-show="!flag">这是v-show标签为false的结果</div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+ 		var vm = Vue.createApp({
+            data(){
+                return {
+                    flag: true
+                }
+            },
+            methods:{ 
+            }
+        }).mount("#app");
+    </script>

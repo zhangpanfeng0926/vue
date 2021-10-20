@@ -1,0 +1,30 @@
+    <div id="app">
+        省份：
+        <select name="provinces" v-model="message">
+            <option value="nx">宁夏</option>
+            <option value="sx">陕西</option>
+            <option value="hb">河北</option>
+        </select>
+        <h2>{{message}}</h2>
+        <hr/>
+        城市：
+        <select name="cities" v-model="msg" multiple>
+            <option value="gy">固原</option>
+            <option value="zw">中卫</option>
+            <option value="yc">银川</option>
+        </select>
+        <h2>{{msg}}</h2>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+         var vm = Vue.createApp({
+            data(){
+                return {
+                    message: 'hb',
+                    msg:['gy','yc']
+                }
+            },
+            methods:{ 
+            }
+        }).mount("#app");
+    </script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-bind</title>
+    <style>
+        .colorStyle{
+            color: pink;
+        }
+        .sizeStyle{
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--动态绑定属性-->
+        <img v-bind:src="imgUrl">
+        <!--动态绑定class 缩略写法-->
+        <p :class="sizeStyle">绑定class文字</p>
+        <!--对象方式绑定-->
+        <p :class="{sizeStyle:true,colorStyle:true}">对象绑定方式</p>
+        <!--动态绑定样式-->
+        <p :style="{color:'green'}">动态绑定样式</p>
+        <!--动态修改样式-->
+        <p :style="{color:mycolor}">可以动态修改的样式</p>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+
+            var vm = Vue.createApp({
+            data(){
+                return{
+                   imgUrl:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fnimg.ws.126.net%2F%3Furl%3Dhttp%253A%252F%252Fdingyue.ws.126.net%252F2021%252F0519%252F38573448j00qtbqy2000rc000hs00hsg.jpg%26thumbnail%3D650x2147483647%26quality%3D80%26type%3Djpg&refer=http%3A%2F%2Fnimg.ws.126.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1634975317&t=92de15f84b9c509840c757bf667d37c6',
+                   colorStyle:'colorStyle',
+                   sizeStyle:'sizeStyle',
+                   mycolor:'yellow'
+                }
+            },
+            methods:{
+
+            }
+        }).mount('#app');
+        
+    </script>
+</body>
+</html>

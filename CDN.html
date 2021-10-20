@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>入门实例</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>
+            {{msg}}
+        </h2>
+        <script>
+            /*创建一个参数对象*/
+            const paramObj={
+                data(){
+                   return{
+                       msg:'Hello World'
+                   }
+                }
+            }
+            //创建一个Vue对象
+            const app=Vue.createApp(paramObj).mount('#app');/*mount是一个挂载点*/
+        </script>
+    </div>
+</body>
+</html>

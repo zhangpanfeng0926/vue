@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基础语法3</title>
+    <style>
+        /*属性选择器*/
+        /*解决网络延迟问题*/
+        [v-cloak]{       
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2 v-cloak>{{message}}</h2>
+        <h2>{{message}}</h2>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>o
+
+        setTimeout(() => {
+            var vm = Vue.createApp({
+            data(){
+                return{
+                   Message:'测试'
+                }
+            },
+            methods:{
+
+            }
+        }).mount('#app');
+        }, 1000);
+        
+    </script>
+</body>
+</html>
